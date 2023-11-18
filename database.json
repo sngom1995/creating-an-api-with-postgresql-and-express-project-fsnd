@@ -1,0 +1,16 @@
+{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "forestore_db",
+      "user": "postgres",
+      "password": "passer"
+    },
+    "test": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "forestore_db_test",
+      "user": "test_user",
+      "password": "passer"
+    }
+  }

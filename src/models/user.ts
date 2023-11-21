@@ -1,5 +1,5 @@
 import client from "../database";
-import bcrypt from "bcrypt";
+
 import CustomExpressError from "./custom_error";
 
 

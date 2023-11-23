@@ -42,7 +42,10 @@ const create = async (req:Request, res: Response, next: Function) => {
 const show = async (req:Request, res: Response, next: Function) => {
     try {
         const id = Number.parseInt(req.params.id);
-        const user = await UserStore.show(id)
+        const user = await UserStore.show(id);
+        if(!user){
+            throw new CustomExpressError("Not Found", 404);
+        }
         return res.json(user);
     } catch (error) {
         return next(error);
@@ -94,11 +97,11 @@ const signin =async (req:Request, res: Response, next: Function) => {
 
 const userRoutes = (app: express.Application) =>{
     app.get("/api/v1/users", protect, index);
-    app.post("/api/v1/users/register", create);
+    app.post("/api/v1/users/register",protect, create);
     app.post("/api/v1/users/login", signin)
     app.get("/api/v1/users/:id", protect, show);
     app.put("/api/v1/users/:id", protect, update);
-    app.delete("/api/v1/users/:id", deleteUser)
+    app.delete("/api/v1/users/:id",protect, deleteUser)
 }
 
 export default userRoutes;

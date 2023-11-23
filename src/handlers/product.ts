@@ -4,12 +4,12 @@ import { protect } from "../middlewares/protect_routes";
 import CustomExpressError from "../models/custom_error";
 
 
-const create =async (req: Request, res: Response, next: Function) => {
+const create = async (req: Request, res: Response, next: Function) => {
     try {
         const { name, price, category } = req.body;
         const product: Product = { name, price, category};
         const productSaved = await ProductStore.create(product);
-        return res.json(productSaved);
+        return res.status(201).json(productSaved);
     } catch (error) {
         return next(error)
     }

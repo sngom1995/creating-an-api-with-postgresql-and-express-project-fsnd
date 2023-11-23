@@ -24,7 +24,7 @@ if(ENV=='test'){
     )
 }
 
-if(ENV=='dev'){
+else{
     client = new Pool(
         {
             host: POSTGRES_HOST,
@@ -34,14 +34,6 @@ if(ENV=='dev'){
         }
     )
 }
-client = new Pool(
-    {
-        host: POSTGRES_HOST,
-        user: POSTGRES_USER,
-        password: POSTGRES_PASSWORD,
-        database: POSGRES_DB
-    }
-)
 
 
 export default client;

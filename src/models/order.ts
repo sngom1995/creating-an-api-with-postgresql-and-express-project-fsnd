@@ -40,15 +40,27 @@ export class OrderStore {
     }
 
 
-    static async getOrdersByUser(user_id: number): Promise<Order[]>{
+    static async getUserCurrentOrder(user_id: number): Promise<Order[]>{
         try {
             const conn = await client.connect();
-            const sql = "SELECT * FROM orders WHERE user_id=($1)";
-            const result = await conn.query(sql,[user_id]);
+            const sql = "SELECT * FROM orders WHERE user_id=($1) AND status=($2)";
+            const result = await conn.query(sql,[user_id, "active"]);
             conn.release();
             return result.rows;
         } catch (error) {
             throw new CustomExpressError(`Cannot find order with usetr id ${user_id}. Error : ${error}`, 404);
+        }
+    }
+
+    static async completeOrder(user_id: number): Promise<Order>{
+        try {
+            const conn = await client.connect();
+            const sql = "UPDATE orders SET status=($1) WHERE user_id=($2) RETURNING *";
+            const result = await conn.query(sql,[ "complete", user_id]);
+            conn.release();
+            return result.rows[0];
+        } catch (error) {
+            throw new CustomExpressError(`Cannot complete order for user with id ${user_id}. Error : ${error}`, 404);
         }
     }
 

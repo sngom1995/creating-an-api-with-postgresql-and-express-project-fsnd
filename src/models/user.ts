@@ -4,7 +4,7 @@ import CustomExpressError from "./custom_error";
 
 
 export type User = {
-    id: number;
+    id?: number;
     firstName: string;
     lastName: string;
     username: string;
@@ -73,7 +73,7 @@ export class UserStore {
     static async delete(id: number): Promise<User>{
         try {
             const conn = await client.connect();
-            const sql = "DELETE FROM users WHERE id = ($1)";
+            const sql = "DELETE FROM users WHERE id = ($1) RETURNING *";
             const result = await conn.query(sql, [id]);
             return  result.rows[0];
         } catch (error) {

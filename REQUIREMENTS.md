@@ -11,14 +11,42 @@ These are the notes from a meeting with the frontend developer that describe wha
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category (args: product category)
 
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/api/v1/products`                       | Retrieve all products.                   |
+| `POST`   | `/api/v1/products`                       | Create a new product.                    |
+| `GET`    | `/api/v1/products/1`                     | Retrieve  product  #1.                   |
+| `GET`    | `/api/v1/products/categories/sports`     | Retrieve all products  in sport category.|
+| `GET`    | `/api/v1/products/top/orders`            | Retrieve top 5 sale products  .          |
+
+
 #### Users
 - Index [token required]
 - Show [token required]
 - Create N[token required]
 
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/api/v1/users`                          | Retrieve all users.                      |
+| `POST`   | `/api/v1/users/register`                 | Create a new user.                       |
+| `POST`   | `/api/v1/users/login`                    | Sign in.                                 |
+| `GET`    | `//api/v1/users/1`                       | Retrieve  user  #1.                      |
+| `PUT`    | `/api/v1/users/1`                        | Update user #1.                          |
+| `DELETE` | `/api/v1/users/1`                        | Delete user #1.                          |
+
+
 #### Orders
 - Current Order by user (args: user id)[token required]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
+
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `//api/v1/orders`                        | Retrieve all orders.                     |
+| `POST`   | `/api/v1/orders`                         | Create a new order.                      |
+| `GET`    | `/api/v1/orders/1`                       | Retrieve  order  #1.                     |
+| `POST`   | `/api/v1/orders/1/add`                   | Add product to  order  #1.               |
+| `PUT`    | `/api/v1/orders/complete/1`              | Complete user #1 order.                  |
+| `GET`    | `/api/v1/orders/user/1`                  | Retrieve user #1 orders.                 |
 
 ## Data Shapes
 #### Product
@@ -31,6 +59,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - id
 - firstName
 - lastName
+- username
 - password
 
 #### Orders

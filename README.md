@@ -52,3 +52,42 @@ Add JWT functionality as shown in the course. Make sure that JWTs are required f
 Before submitting, make sure that your project is complete with a `README.md`. Your `README.md` must include instructions for setting up and running your project including how you setup, run, and connect to your database. 
 
 Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data shapes from the `REQUIREMENTS.md`, it is ready for submission!
+
+
+### Database setup
+
+1. **Create user**
+
+```
+CREATE USER forestore_user WITH PASSWORD 'passer';
+```
+
+2. **Create databases**
+
+```
+
+CREATE DATABASE forestore_db;
+CREATE DATABASE forestore_db_test;
+```
+
+3. **Grant priviledge**
+
+```
+GRANT ALL PRIVILEGES ON forestore_db TO forestore_user;
+GRANT ALL PRIVILEGES ON forestore_db_tes TO forestore_user;
+```
+
+
+### Env variables
+
+```
+POSTGRES_HOST=127.0.0.1
+POSTGRES_TEST_USER=forestore_user
+POSTGRES_USER=forestore_user
+POSGRES_DB=forestore_db
+POSGRES_DB_TEST=forestore_db_test
+POSTGRES_PASSWORD=passer
+ENV=dev
+JWT_SECRET=4bWKkHfRA3fSTDo0BWh0jWfRyJWWDFre
+SALT=10
+```

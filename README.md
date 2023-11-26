@@ -91,3 +91,9 @@ ENV=dev
 JWT_SECRET=4bWKkHfRA3fSTDo0BWh0jWfRyJWWDFre
 SALT=10
 ```
+
+
+### Backend port
+```
+port=3000
+```
